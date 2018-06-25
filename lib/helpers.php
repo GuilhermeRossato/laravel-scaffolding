@@ -81,15 +81,21 @@ function env($key, $default = null)
 }
 
 /**
- * [Not fully implemented] Returns a configuration from the config folder
+ * Returns a configuration from the config folder
  * @param  string $name The option separated by dots
  * @return mixed The defined value or a empty string if not defined
  */
 function config($name)
 {
     global $config;
-    if ($name == "app.name") {
-        return $config['app']['name'];
+    $node = $config;
+    $parts = explode('.', $name);
+    foreach ($parts as $part) {
+        if (is_array($node) && isset($node[$part])) {
+            $node = $node[$part];
+        } else {
+            return '';
+        }
     }
-    return '';
+	return $node;
 }
