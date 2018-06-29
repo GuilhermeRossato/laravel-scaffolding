@@ -32,7 +32,7 @@ class Route {
 	 *
 	 * @throws Exception with the corresponding message if the action is incorrect
 	 *
-	 * @param string[or callable] $multi a function or a string that represents a function or a method of a class to be executed
+	 * @param string|callable $multi a function or a string that represents a function or a method of a class to be executed
 	 * @param Request $request An instance with it's method set (usually from $_SERVER)
 	 * @param array $data Optional data to send to action's method
 	 * @return mixed
@@ -50,7 +50,7 @@ class Route {
 					throw new Exception('Too many @ separators as route\'s action');
 				}
 				$class = $multiParts[0];
-				require app_path().'/app/controllers/'.$class.'.php';
+				require_once app_path().'/app/controllers/'.$class.'.php';
 				$instance = new $class();
 				$method = $multiParts[1];
 				if (!method_exists($instance, $method)) {
@@ -117,10 +117,9 @@ class Route {
 			if (!is_array($methods)) {
 				$methods = [$methods];
 			}
-			$method = strtolower($_SERVER['REQUEST_METHOD']);
+			$request = request();
+			$method = $request->method();
 			if (in_array($method, $methods)) {
-				$request = new Request();
-				$request->setMethod($method);
 				return self::treatAction($action, $request, $data);
 			}
 		}
@@ -179,9 +178,7 @@ class Route {
 	 */
 	static function finish($action) {
 		if (!self::$hasMatched) {
-			$method = strtolower($_SERVER['REQUEST_METHOD']);
-			$request = new Request();
-			$request->setMethod($method);
+			$request = request();
 			return self::treatAction($action, $request, null);
 		}
 	}

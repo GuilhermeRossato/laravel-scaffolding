@@ -99,3 +99,19 @@ function config($name)
     }
 	return $node;
 }
+
+/**
+ * Returns the request object of the ongoing request
+ * @return Request instance 
+ */
+function request() {
+    static $request = null;
+
+    if ($request === null) {
+        $method = strtolower($_SERVER['REQUEST_METHOD']);
+        $request = new Request();
+		$request->setMethod($method);
+    }
+
+    return $request;
+}
