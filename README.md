@@ -55,9 +55,7 @@ I made this after realizing Laravel is just very clumbersome and comes loaded wi
 
 Even though Laravel is very extensive and easy to use, I prefer to use dependency-less applications, but I also love the easy way to define things in laravel like routes, views, file system and authentication.
 
-Anyways, my deploy of around 30 files is 1000 faster than a laravel application. Another great thing about developing this is that it grows as my undertanding of Laravel also grows, not only that, I learn how to implement 
-
-, and the best part is that this project is growing with my knowleadge of laravel. For example, I don't understand Service Containers, and what the hell is `Illuminate\Contracts\Queue\Queue`?
+Anyways, my deploy of around 30 files is 1000 faster than a laravel application. Another great thing about developing this is that it grows as my undertanding of Laravel also grows, not only that, I learn how to implement, and the best part is that this project is growing with my knowleadge of laravel. For example, I don't understand Service Containers, and what the hell is `Illuminate\Contracts\Queue\Queue`?
 
 # Special thanks
 
