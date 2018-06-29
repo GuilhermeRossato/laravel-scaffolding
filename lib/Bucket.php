@@ -66,7 +66,7 @@ class Bucket {
      * @return string The full path of the object in the file system, including extension.
      */
     protected function expandFilename($name, $ext = 'json') {
-        return $this->origin.DIRECTORY_SEPARATOR.(this->sanitize($name)).'.'.$ext;
+        return $this->origin.(DIRECTORY_SEPARATOR).($this->sanitize($name)).'.'.$ext;
     }
 
     /**
@@ -97,7 +97,21 @@ class Bucket {
         if (!is_string($data)) {
             return false;
         }
+        if(!file_exists(dirname($filename))) {
+            mkdir(dirname($filename), 0777, true);
+        }
         return file_put_contents($filename, $data, $append?FILE_APPEND:0);
+    }
+
+    /**
+     * Get full file path by its name.
+     * Alias for expandFilename()
+     * 
+     * @param string $name The name of the file.
+     * @return string The full path of the file
+     */
+    public function getFullPath($name) {
+        return $this->expandFilename($name);
     }
 
     /**
