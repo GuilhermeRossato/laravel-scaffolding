@@ -95,7 +95,7 @@ class Bucket {
     public function save($name, $data, $append = false) {
         $filename = $this->expandFilename($name);
         if (!is_string($data)) {
-            return false;
+            $data = json_encode($data, JSON_PRETTY_PRINT);
         }
         if(!file_exists(dirname($filename))) {
             mkdir(dirname($filename), 0777, true);
