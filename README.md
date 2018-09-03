@@ -4,7 +4,7 @@ A scaffolding that aims to mimic laravel framework, following most of its princi
 
 Basically an experiment to make it lighter, because I feel laravel is far too large for some small projects.
 
-The idea is that any server regardless of php version or configuration can run this, and every problem is easily found, for the application is simple and with very a very little codebase.
+The idea is that any server regardless of php version or configuration can run this, and every problem is easily found, for the application is simple and with a very small (but essential) codebase.
 
 # Routing
 
