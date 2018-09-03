@@ -28,7 +28,7 @@ Route::post('/message/save', function($request) {
     return "Success!";
 });
 
-Route::Get('/message', 'MessageController@index');
+Route::get('/message', 'MessageController@index');
 // A class in /app/controllers/MessageController.php must have the "index" method with $request as parameter
 // Should return message as string or echo directly
 ````
@@ -51,20 +51,22 @@ Every class is defined as `/lib/<classname>.php`, they are loaded lazily and aut
 
 # Inspiration
 
-I made this after realizing Laravel is just very clumbersome and comes loaded with 3k+ files of dependencies, which I know doesn't necessarily cause relevant performance issues while the aplication is running, but makes my deploy process take far too long for small projects.
+Laravel is a great tool, extensive and easy to use to some extent. However, it comes loaded with 3k+ files of dependencies and whatever the developer intended on having, like twig, guzzle and others dependencies that you might or might now use. I know that the file count doesn't cause performance issues while the aplication is running but it still makes my deploy process take far too long for small projects.
 
-Even though Laravel is very extensive and easy to use, I prefer to use dependency-less applications, but I also love the easy way to define things in laravel like routes, views, file system and authentication.
+Anyways, I prefer dependency-less apps, simple, fully undestandable. Have you ever asked yourself: What are Service Containers, Contracts or Queues? When I develop for laravel, I want to learn about these things AS i need them, not before that.
 
-Anyways, my deploy of around 30 files is 1000 faster than a laravel application. Another great thing about developing this is that it grows as my undertanding of Laravel also grows, not only that, I learn how to implement, and the best part is that this project is growing with my knowleadge of laravel. For example, I don't understand Service Containers, and what the hell is `Illuminate\Contracts\Queue\Queue`?
+Best part of that repository is that it's being developed with laravel in mind without copying anything but the way we use the tool, so that it can keep being simple to use.
+
+Finally, this codebase grows with my understanding of laravel, so if something is not implemented here, either I don't understand it yet or it hasn't been useful yet.
 
 # Special thanks
 
-Laravel and every contributor to it. I love the concepts learned and believe it's a great framework.
+To Laravel and every contributor to it. I love the concepts it taught me and it's a great framework.
 
 # License
 
 Since all code is mine (proprietary), I plan to make it open for any and all usage, you can copy and redistribute, sell or whatever.
 
-At the moment it's MIT because it's what Laravel uses and I don't understand how to choose correctly so i'll just trust the original Laravel creator to have done a good research.
+However, I will use MIT because it's what Laravel uses and I believe that something that mimicks it should not change the licence, not only because of legal consequences, but because people are already used to MIT. Also, I trust the original Laravel creator to have done a good research on licencing.
 
 :)
